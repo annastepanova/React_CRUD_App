@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
-import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
 import NewUser from "./components/NewUser"
 import UserInfo from "./components/UserInfo"
 import UsersList from "./components/UsersList"
