@@ -6,10 +6,16 @@ const UsersList = () => {
   const [users, setUsers] = useState([])
   const [currentUser, setCurrentUser] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(-1)
+  const [searchUser, setSearchUser] = useState("")
 
   useEffect(() => {
     getUsers()
   }, [])
+
+  const onChangeSearchUser = e => {
+    const searchUser = e.target.value
+    setSearchUser(searchUser)
+  }
 
   const getUsers = () => {
     UserDataService.getAll()
@@ -44,8 +50,39 @@ const UsersList = () => {
       })
   }
 
+  const findByUsername = () => {
+    UserDataService.findByName(searchUser)
+      .then(response => {
+        setUsers(response.data)
+        console.log(response.data)
+      })
+      .catch(e => {
+        console.log(e)
+      })
+  }
+
   return (
     <div className="list row">
+      <div className="col-md-8">
+        <div className="input-group mb-3">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Search by username"
+            value={searchUser}
+            onChange={onChangeSearchUser}
+          />
+          <div className="input-group-append">
+            <button
+              className="btn btn-outline-secondary"
+              type="button"
+              onClick={findByUsername}
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
       <div className="col-md-6">
         <h4>Users List</h4>
 

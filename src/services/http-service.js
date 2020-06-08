@@ -24,11 +24,16 @@ const removeAll = () => {
   return http.delete(`/users`)
 }
 
+const findByName = username => {
+  return http.get(`/users/search?username=${username}`)
+}
+
 export default {
   getAll,
   get,
   create,
   update,
   remove,
-  removeAll
+  removeAll,
+  findByName
 }
