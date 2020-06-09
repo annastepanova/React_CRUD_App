@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import NewUser from "./components/NewUser"
 import UserInfo from "./components/UserInfo"
-import UsersList from "./components/UsersList"
+import Users from "./components/Users"
 import HomePage from './components/HomePage'
 
 const App = () => {
@@ -32,7 +32,7 @@ const App = () => {
         <div className="container mt-3">
           <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route exact path="/users" component={UsersList} />
+            <Route exact path="/users" component={Users} />
             <Route exact path="/users/new" component={NewUser} />
             <Route path="/users/:id" component={UserInfo} />
           </Switch>
